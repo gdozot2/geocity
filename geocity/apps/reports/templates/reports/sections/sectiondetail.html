@@ -8,7 +8,9 @@
                 {% for form, fields in request_data.properties.submission_fields.items %}
                     <h3>{{form}}</h3>
                     {% for key, field in fields.items %}
-                        <span class="bold">{{key}} : </span>{{field}}<br>
+                        {% if not key in section.undesired_properties %}
+                            <span class="bold">{{key}} : </span>{{field}}<br>
+                        {% endif %}
                     {% endfor %}
                 {% endfor %}
             </div>
